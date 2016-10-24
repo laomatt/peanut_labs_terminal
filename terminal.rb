@@ -40,36 +40,36 @@ class Terminal
 
   def parse_line(line)
     lined = line.gsub("\n",'').split('')
-      idx = 0
-      while idx < lined.length
-          if lined[idx] != '^'
-            write(lined[idx])
+    idx = 0
+    while idx < lined.length
+      if lined[idx] != '^'
+        write(lined[idx])
+        idx += 1
+      else
+        # if we come across a ^ we check for single char commands
+          # check for another ^
+        if lined[idx + 1] == '^'
+          write('^')
+          idx += 1
+          idx += 1
+      # check for c,h,b,d,u,l,r,e,i,o
+        elsif ['c','h','b','d','u','l','r','e','i','o'].include?(lined[idx + 1])
+          command_me(lined[idx + 1])
+          # if we come across a ^ we check for double char commands
+          # two fixnums in a row
+          idx += 1
+          idx += 1
+        else
+          next if lined[idx + 1].nil? || lined[idx + 2].nil?
+          if lined[idx + 1].is_i? && lined[idx + 2].is_i?
+            move_to(lined[idx + 1],lined[idx + 2])
             idx += 1
-          else
-              # if we come across a ^ we check for single char commands
-                # check for another ^
-              if lined[idx + 1] == '^'
-                write('^')
-                idx += 1
-                idx += 1
-            # check for c,h,b,d,u,l,r,e,i,o
-              elsif ['c','h','b','d','u','l','r','e','i','o'].include?(lined[idx + 1])
-                command_me(lined[idx + 1])
-                # if we come across a ^ we check for double char commands
-                # two fixnums in a row
-                idx += 1
-                idx += 1
-              else
-                next if lined[idx + 1].nil? || lined[idx + 2].nil?
-                if lined[idx + 1].is_i? && lined[idx + 2].is_i?
-                  move_to(lined[idx + 1],lined[idx + 2])
-                  idx += 1
-                  idx += 1
-                  idx += 1
-                end
-              end
+            idx += 1
+            idx += 1
           end
+        end
       end
+    end
   end
 
   def move_to(j,i)

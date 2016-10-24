@@ -34,6 +34,7 @@ Regardless of the mode, the cursor is moved right one column, if possible.
 
 INPUT SAMPLE:
 Your program should accept as its first argument a path to a filename. Input example is the following
+
 ^h^c
 ^04^^
 ^13/ \^d^b  /   \
@@ -46,6 +47,7 @@ Your program should accept as its first argument a path to a filename. Input exa
 
 OUTPUT SAMPLE:
 Print results in the following way.
+
     ^
    / \
   /   \
