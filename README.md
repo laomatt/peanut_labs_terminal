@@ -17,7 +17,7 @@ You may always replace sample_input with a path to  file which has lines of comm
 
   type in
 ```
-  'ruby terminal.rb start!'
+  ruby terminal.rb start!
 ```
 
   then you will see a prompt with the marker displayed as a _
