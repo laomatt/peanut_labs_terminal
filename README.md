@@ -58,25 +58,15 @@ OUTPUT SAMPLE:
 Print results in the following way.
 
     ^
-
    / \
-
   /   \
-
  /     \
-
 <CodeEval>
-
  \     /
-
   \   /
-
    \ /
-
     v
-
 ====A=====
-
 
 
 
