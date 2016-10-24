@@ -1,10 +1,12 @@
-I did not see any requirments as far as what coding language to use, so I chose ruby.
+Thanks for taking the time to look at my code!  I did not see any requirments as far as what coding language to use, so I chose ruby.
 
 There are two ways to run this:
-
+***
 1) you can run 'ruby terminal.rb input' which will take a filename as input and run the program with the sample file as an input
 
+
 2) you may also use this as an interactive terminal, with a command line, so you may type in any command listed below, as well as words that you want the terminal to display.
+***
 
 
 The original challenge
@@ -34,29 +36,21 @@ Regardless of the mode, the cursor is moved right one column, if possible.
 
 INPUT SAMPLE:
 Your program should accept as its first argument a path to a filename. Input example is the following
-
+```
 ^h^c
-
 ^04^^
-
 ^13/ \^d^b  /   \
-
 ^u^d^d^l^l^l^l^l^l^l^l^l
-
 ^r^r^l^l^d<CodeEval >^l^l^d/^b \
-
 ^d^r^r^66/^b  \
-
 ^b^d   \ /
-
 ^d^l^lv^d^b===========^i^94O123456
-
 789^94A=======^u^u^u^u^u^u^l^l\^o^b^r/
-
+```
 
 OUTPUT SAMPLE:
 Print results in the following way.
-
+```
     ^
    / \
   /   \
@@ -67,8 +61,7 @@ Print results in the following way.
    \ /
     v
 ====A=====
-
-
-
+```
 
 **Please email your response to resumes@peanutlabs.com**
+
