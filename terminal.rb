@@ -189,6 +189,8 @@ class Terminal
     @output.each do |op|
       puts op.join
     end
+    @output[@cursor_position[:j]][@cursor_position[:i]] = ' '
+
   end
 end
 
