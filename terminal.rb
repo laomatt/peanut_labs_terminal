@@ -10,7 +10,8 @@ end
 
 class Terminal
   attr_accessor :output
-  def initialize(file_path=nil)
+  def initialize(context, file_path=nil)
+    @type = context
     @cursor_position = {
       :i => 0,
       :j => 0
@@ -18,18 +19,7 @@ class Terminal
 
     @insert = false
     @overwrite = true
-    @output = [
-                [" "," "," "," "," "," "," "," "," "," "],
-                [" "," "," "," "," "," "," "," "," "," "],
-                [" "," "," "," "," "," "," "," "," "," "],
-                [" "," "," "," "," "," "," "," "," "," "],
-                [" "," "," "," "," "," "," "," "," "," "],
-                [" "," "," "," "," "," "," "," "," "," "],
-                [" "," "," "," "," "," "," "," "," "," "],
-                [" "," "," "," "," "," "," "," "," "," "],
-                [" "," "," "," "," "," "," "," "," "," "],
-                [" "," "," "," "," "," "," "," "," "," "]
-              ]
+    reset
     if !file_path.nil?
       File.open( "#{file_path}" ).each do |line|
         com_array = []
@@ -106,18 +96,35 @@ class Terminal
   end
 
   def reset
-    @output = [
-                [" "," "," "," "," "," "," "," "," "," "],
-                [" "," "," "," "," "," "," "," "," "," "],
-                [" "," "," "," "," "," "," "," "," "," "],
-                [" "," "," "," "," "," "," "," "," "," "],
-                [" "," "," "," "," "," "," "," "," "," "],
-                [" "," "," "," "," "," "," "," "," "," "],
-                [" "," "," "," "," "," "," "," "," "," "],
-                [" "," "," "," "," "," "," "," "," "," "],
-                [" "," "," "," "," "," "," "," "," "," "],
-                [" "," "," "," "," "," "," "," "," "," "]
-              ]
+    if @type == :running
+      @output = [
+              [" "," "," "," "," "," "," "," "," "," ",'|'],
+              [" "," "," "," "," "," "," "," "," "," ",'|'],
+              [" "," "," "," "," "," "," "," "," "," ",'|'],
+              [" "," "," "," "," "," "," "," "," "," ",'|'],
+              [" "," "," "," "," "," "," "," "," "," ",'|'],
+              [" "," "," "," "," "," "," "," "," "," ",'|'],
+              [" "," "," "," "," "," "," "," "," "," ",'|'],
+              [" "," "," "," "," "," "," "," "," "," ",'|'],
+              [" "," "," "," "," "," "," "," "," "," ",'|'],
+              [" "," "," "," "," "," "," "," "," "," ",'|']
+            ]
+
+    else
+      @output = [
+                  [" "," "," "," "," "," "," "," "," "," "],
+                  [" "," "," "," "," "," "," "," "," "," "],
+                  [" "," "," "," "," "," "," "," "," "," "],
+                  [" "," "," "," "," "," "," "," "," "," "],
+                  [" "," "," "," "," "," "," "," "," "," "],
+                  [" "," "," "," "," "," "," "," "," "," "],
+                  [" "," "," "," "," "," "," "," "," "," "],
+                  [" "," "," "," "," "," "," "," "," "," "],
+                  [" "," "," "," "," "," "," "," "," "," "],
+                  [" "," "," "," "," "," "," "," "," "," "]
+                ]
+
+    end
   end
 
   def command_me(comm)
@@ -158,21 +165,23 @@ class Terminal
   end
 
   def move
-    @cursor_position[:i] += 1 if @cursor_position[:i] < 9
 
 
     # I assumed that if a cursor couldnt move to the right anymore, we should type writter it and move the cursor to the begining of the next row
-
-    # if @cursor_position[:i] >= 9
-    #   @cursor_position[:i] = 0
-    #   if @cursor_position[:j] >= 9
-    #     @cursor_position[:j] = 9
-    #   else
-    #     @cursor_position[:j] += 1
-    #   end
-    # else
-    #   @cursor_position[:i] += 1
-    # end
+    if @type == :running
+      if @cursor_position[:i] >= 9
+        @cursor_position[:i] = 0
+        if @cursor_position[:j] >= 9
+          @cursor_position[:j] = 9
+        else
+          @cursor_position[:j] += 1
+        end
+      else
+        @cursor_position[:i] += 1
+      end
+    else
+      @cursor_position[:i] += 1 if @cursor_position[:i] < 9
+    end
   end
 
   def display
@@ -182,8 +191,10 @@ class Terminal
   end
 
   def display_me_running
+    @output[@cursor_position[:j]][@cursor_position[:i]] = '_'
+    puts "++++++++++"
     @output.each do |op|
-      r op.join
+      puts op.join
     end
   end
 end
@@ -192,11 +203,11 @@ end
 
 file_path = ARGV.shift
 if file_path != 'start!'
-  term = Terminal.new(file_path)
+  term = Terminal.new(:static, file_path)
   term.display
 else
   running = true
-  term = Terminal.new()
+  term = Terminal.new(:running)
   while running == true
     puts 'enter a command and press enter (typing "exit" will terminate session)'
     comm = gets.chomp
@@ -204,7 +215,8 @@ else
       running = false
     else
       term.parse_line(comm)
-      term.display
+      term.display_me_running
+      # term.display
     end
   end
 end
