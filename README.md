@@ -36,14 +36,23 @@ INPUT SAMPLE:
 Your program should accept as its first argument a path to a filename. Input example is the following
 
 ^h^c
+
 ^04^^
+
 ^13/ \^d^b  /   \
+
 ^u^d^d^l^l^l^l^l^l^l^l^l
+
 ^r^r^l^l^d<CodeEval >^l^l^d/^b \
+
 ^d^r^r^66/^b  \
+
 ^b^d   \ /
+
 ^d^l^lv^d^b===========^i^94O123456
+
 789^94A=======^u^u^u^u^u^u^l^l\^o^b^r/
+
 
 OUTPUT SAMPLE:
 Print results in the following way.
@@ -58,6 +67,7 @@ Print results in the following way.
    \ /
     v
 ====A=====
+
 
 
 **Please email your response to resumes@peanutlabs.com**
