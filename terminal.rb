@@ -39,22 +39,18 @@ class Terminal
           # check for another ^
         if lined[idx + 1] == '^'
           write('^')
-          idx += 1
-          idx += 1
+          idx += 2
       # check for c,h,b,d,u,l,r,e,i,o
         elsif ['c','h','b','d','u','l','r','e','i','o'].include?(lined[idx + 1])
           command_me(lined[idx + 1])
           # if we come across a ^ we check for double char commands
           # two fixnums in a row
-          idx += 1
-          idx += 1
+          idx += 2
         else
           next if lined[idx + 1].nil? || lined[idx + 2].nil?
           if lined[idx + 1].is_i? && lined[idx + 2].is_i?
             move_to(lined[idx + 1],lined[idx + 2])
-            idx += 1
-            idx += 1
-            idx += 1
+            idx += 3
           end
         end
       end

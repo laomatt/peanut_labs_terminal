@@ -2,14 +2,24 @@ Thanks for taking the time to look at my code!  I did not see any requirments as
 
 There are two ways to run this:
 ***
-1) The default way is to run 'ruby terminal.rb sample_input' which will take a filename (sample_input) as input and run the program with the sample file as an input (the sample file is called input)
+1) The default way is to run:
+
+```
+ruby terminal.rb sample_input
+```
+
+which will take a filename (sample_input) as input and run the program with the sample file as an input (the sample file is called input)
 
 You may always replace sample_input with a path to  file which has lines of commands for the terminal. (Like a shell script in a way)
 
 
 2) you may also use this as an interactive terminal, with a command line:
 
-  type in 'ruby terminal.rb start!'
+  type in
+```
+  'ruby terminal.rb start!'
+```
+
   then you will see a prompt with the marker displayed as a _
   type in 'exit' to end the session
 
