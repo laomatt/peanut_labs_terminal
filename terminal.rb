@@ -7,7 +7,6 @@ class String
 end
 # Borrowed this code to check string for an integer
 
-
 class Terminal
   attr_accessor :output
   def initialize(context, file_path=nil)
@@ -165,8 +164,6 @@ class Terminal
   end
 
   def move
-
-
     # I assumed that if a cursor couldnt move to the right anymore, we should type writter it and move the cursor to the begining of the next row
     if @type == :running
       if @cursor_position[:i] >= 9
@@ -216,7 +213,6 @@ else
     else
       term.parse_line(comm)
       term.display_me_running
-      # term.display
     end
   end
 end
