@@ -198,7 +198,7 @@ else
   running = true
   term = Terminal.new()
   while running == true
-    puts 'enter a command'
+    puts 'enter a command and press enter (typing "exit" will terminate session)'
     comm = gets.chomp
     if comm.to_s == 'exit'
       running = false
