@@ -57,16 +57,26 @@ Your program should accept as its first argument a path to a filename. Input exa
 OUTPUT SAMPLE:
 Print results in the following way.
 
-    ^<br />
-   / \<br />
-  /   \<br />
- /     \<br />
-<CodeEval><br />
- \     /<br />
-  \   /<br />
-   \ /<br />
-    v<br />
-====A=====<br />
+    ^
+
+   / \
+
+  /   \
+
+ /     \
+
+<CodeEval>
+
+ \     /
+
+  \   /
+
+   \ /
+
+    v
+
+====A=====
+
 
 
 
